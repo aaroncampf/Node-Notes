@@ -1,0 +1,16 @@
+﻿{
+		"Companies": [
+				{
+						"ID": 1,
+						"Name": "AJP Northwest",
+						"Address": "??",
+						"City": "Portland",
+						"State": "Oregon",
+						"Zip": "??",
+						"Phone": "??",
+						"Contacts": [],
+						"Quotes": []
+				}
+		],
+		"Products": []
+}

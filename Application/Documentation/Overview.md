@@ -7,3 +7,7 @@
   * Step 2: SQLite Database
 * Demonstrate Proficiency with Node.js and JavaScript in general
 * Create a Portfolio Piece
+
+
+## Note To Self
+* https://www.npmjs.com/ for downloading Typings
