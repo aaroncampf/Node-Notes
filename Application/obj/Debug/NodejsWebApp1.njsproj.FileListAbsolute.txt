@@ -1,0 +1,2 @@
+C:\Users\aaron\Documents\GitHub\Node Notes\Application\obj\Debug\NodejsWebApp1.njsprojResolveAssemblyReference.cache
+C:\Users\aaron\Documents\GitHub\Node Notes\Application\bin\Microsoft.NodejsTools.WebRole.dll

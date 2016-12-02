@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+</head>
+<body>
+	<h1>Companies</h1>
+
+
+</body>
+</html>
+
+<script>
+	var Companies = require('./Database/Data.json').Companies;
+	for (var i = 0; i < Companies.length; i++) {
+		var Company = Companies[i];
+		res.write("<b>" + Company.Name + "</b>\n");
+	}
+</script>
