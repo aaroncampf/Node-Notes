@@ -40,7 +40,6 @@
     <Content Include="bin\setup_web.cmd" />
     <Content Include="bin\node.cmd" />
     <Content Include="package.json" />
-    <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
