@@ -1,48 +1,36 @@
 "use strict";
-var Http = require("http");
 var Port = process.env.port || 1337;
-var Companies = require('./Database/Data.json').Companies;
-var Products = require('./Database/Data.json').Products;
 const Express = require("express");
 var app = Express();
-/*
-Http.createServer(function (req, res) {
-                res.writeHead(200, { 'Content-Type': "text/plain" });
-                res.write("<h1>Companies</h1>\n");
-
-                for (var i = 0; i < Companies.length; i++) {
-                                var Company = Companies[i];
-                                res.write("<b>" + Company.Name + "</b>\n");
-                }
-
-                res.end("");
-                //fs.read("C:\Users\aaron\Documents\GitHub\Node Notes\Application\Database\Data.json");
-}).listen(Port);
-*/
-//App.use(Express.static("Views"));
+var path = require("path");
+app.set("view engine", "ejs"); //Upgrade to Handlebars
+app.set("views", "./Views");
+var Companies = require("./Database/Data.json").Companies;
+// var companyRouter = require('./src/routes/bookRoutes')(nav);
+// var Products: any = require("./Database/Data.json").Products;
+// app.use(Express.static("Views"));
 app.set("Views", Express.static("Views"));
+// todo: Figure out the correct type for res
 app.get("/", (req, res) => {
-    res.writeHead(200, { 'Content-Type': "text/html" });
+    res.writeHead(200, { "Content-Type": "text/html" });
     res.write("<h1>Home Page</h1>\n");
-    res.write("<a href='/Companies'>Companies</h1>\n");
+    res.write("<a href='/Companies'>Companies</h1> <br/>");
+    res.write("<a href='/Companies/1'>AJP Northwest</h1>\n");
     res.end("");
 });
-app.get("/Companies", (req, res) => {
-    res.writeHead(200, { 'Content-Type': "text/html" });
-    res.render("Companies");
-    res.end("");
-    /*
-    res.write("<h1>Companies</h1>\n");
-    
-    for (var i = 0; i < Companies.length; i++) {
-                    var Company = Companies[i];
-                    res.write("<b>" + Company.Name + "</b>\n");
+var companyRouter = Express.Router();
+companyRouter.get("/", (req, res) => {
+    //app.locals.Companies = Companies;
+    res.render("Companies/Index", { Companies: Companies });
+});
+companyRouter.route("/:id").get((req, res) => {
+    if (Companies.length >= req.params.id) {
+        res.render("Companies/Company", { Company: Companies[req.params.id - 1] });
     }
-    
-    res.end("");
-    */
+    else {
+        res.render("Error");
+    }
 });
-app.listen(Port, err => {
-    console.log("Running server on port " + Port);
-});
+app.use("/Companies", companyRouter);
+app.listen(Port);
 //# sourceMappingURL=server.js.map
