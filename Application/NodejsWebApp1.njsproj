@@ -52,11 +52,13 @@
   <ItemGroup>
     <Content Include="Database\Data.json" />
     <Content Include="Documentation\Overview.md" />
+    <Content Include="Views\Companies\Company.hbs" />
     <Content Include="Views\Companies\Index.ejs" />
     <Content Include="Views\Companies\Index.hbs" />
     <Content Include="Views\Companies\Company.ejs" />
     <Content Include="Views\Error.ejs" />
     <Content Include="Views\Jade1.jade" />
+    <Content Include="Views\Partials\References.hbs" />
     <Content Include="Views\Partials\References.ejs" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config" />

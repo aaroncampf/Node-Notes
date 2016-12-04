@@ -3,7 +3,9 @@ var Port = process.env.port || 1337;
 var Express = require("express");
 var app = Express();
 var path = require("path");
-app.set("view engine", "ejs"); //Upgrade to Handlebars
+var handlebars = require('express-handlebars');
+app.engine('.hbs', handlebars({ extname: '.hbs' }));
+app.set("view engine", ".hbs");
 app.set("views", "./Views");
 app.use(Express.static('./node_modules/bootstrap/dist/css'));
 var Companies = require("./Database/Data.json").Companies;
