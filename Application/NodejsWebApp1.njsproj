@@ -57,6 +57,7 @@
     <Content Include="Views\Companies\Company.ejs" />
     <Content Include="Views\Error.ejs" />
     <Content Include="Views\Jade1.jade" />
+    <Content Include="Views\Partials\References.ejs" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config" />
     <Content Include="bin\ChangeConfig.ps1" />
@@ -77,6 +78,7 @@
     <Folder Include="typings\modules\node\" />
     <Folder Include="Views\" />
     <Folder Include="Views\Companies\" />
+    <Folder Include="Views\Partials\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="server.ts" />

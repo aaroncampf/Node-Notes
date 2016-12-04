@@ -6,19 +6,13 @@ var path: any = require("path");
 
 app.set("view engine", "ejs"); //Upgrade to Handlebars
 app.set("views", "./Views");
+app.use(Express.static('./node_modules/bootstrap/dist/css')) 
 
 var Companies: any[] = require("./Database/Data.json").Companies;
 
+
 // var companyRouter = require('./src/routes/bookRoutes')(nav);
-
-
-
 // var Products: any = require("./Database/Data.json").Products;
-
-
-
-// app.use(Express.static("Views"));
-app.set("Views", Express.static("Views"));
 
 
 // todo: Figure out the correct type for res

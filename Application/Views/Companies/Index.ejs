@@ -1,28 +1,19 @@
-﻿<!DOCTYPE html>
+﻿<% include ../Partials/References %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
 	<title></title>
 </head>
 <body>
+	<ol class="breadcrumb">
+		<li><a href="/">Home</a></li>
+		<li><a href="/Companies">Companies</a></li>
+	</ol>
+
 	<h1>Upgrade to use Handlebars</h1>
 	<h1>Companies</h1>
 	<% for (var i = 0; i < Companies.length; i++) { %>
-	<b><%= Companies[i].Name %></b>
+	<a href='/Companies/<%= i + 1 %>'><%= Companies[i].Name %></a>
 	<% } %>
 
 </body>
-</html>
-
-<script>
-	//var Companies = require('./Database/Data.json').Companies;
-	//debugger;
-
-
-
-	//for (var i = 0; i < Companies.length; i++) {
-	//	var Company = Companies[i];
-	//	res.write("<b>" + Company.Name + "</b>\n");
-	//}
-</script>
