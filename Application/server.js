@@ -28,6 +28,21 @@ companyRouter.route("/:id").get(function (req, res) {
         res.render("Error");
     }
 });
+companyRouter.route("/:id/Contacts/:contactid").get(function (req, res) {
+    var Company = Companies[req.params.id - 1];
+    var Contact;
+    for (var i = 0; i < Company.Contacts.length; i++) {
+        if (Company.Contacts[i].ID === req.params.contactid) {
+            Contact = Company.Contacts[i];
+        }
+    }
+    if (Contact !== undefined) {
+        res.render("Contacts/Contact", { Contact: Contact, CompanyId: Company.ID, CompanyName: Company.Name });
+    }
+    else {
+        res.render("Error");
+    }
+});
 app.use("/Companies", companyRouter);
 app.listen(Port);
 //# sourceMappingURL=server.js.map

@@ -42,6 +42,11 @@
 	</div>
 
 	<h2>Contacts</h2>
+	{{#with Company}}
+	{{#each Contacts}}
+	<a href='/Companies/{{../ID}}/Contacts/{{ID}}'> {{Name}}</a>
+	{{/each}}
+	{{/with}}
 	<h2>Quotes</h2>
 
 	<div class="jumbotron">

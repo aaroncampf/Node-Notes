@@ -14,7 +14,7 @@ app.set("view engine", ".hbs");
 
 
 app.set("views", "./Views");
-app.use(Express.static('./node_modules/bootstrap/dist/css')) 
+app.use(Express.static('./node_modules/bootstrap/dist/css'))
 
 var Companies: any[] = require("./Database/Data.json").Companies;
 
@@ -33,11 +33,10 @@ var companyRouter = Express.Router();
 companyRouter.get("/", (req: any, res: any) => {
 				//app.locals.Companies = Companies;
 				res.render(
-							"Companies/Index",
+								"Companies/Index",
 								{ Companies: Companies }
 				);
 });
-
 
 companyRouter.route("/:id").get((req, res) => {
 				if (Companies.length >= req.params.id) {
@@ -49,8 +48,26 @@ companyRouter.route("/:id").get((req, res) => {
 				else {
 								res.render("Error");
 				}
+
 })
+
+companyRouter.route("/:id/Contacts/:contactid").get((req, res) => {
+				var Company = Companies[req.params.id - 1];
+				var Contact: any;
+				for (var i = 0; i < Company.Contacts.length; i++) {
+								if (Company.Contacts[i].ID === req.params.contactid) {
+												Contact = Company.Contacts[i];
+								}
+				}
+
+				if (Contact !== undefined) {
+								res.render("Contacts/Contact", { Contact: Contact, CompanyId: Company.ID, CompanyName: Company.Name });
+				}
+				else {
+								res.render("Error");
+				}
+})
+
 app.use("/Companies", companyRouter);
 
-
-	app.listen(Port);
+app.listen(Port);
