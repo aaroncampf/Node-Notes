@@ -55,6 +55,7 @@
     <Content Include="Views\Companies\Company.hbs" />
     <Content Include="Views\Companies\Index.hbs" />
     <Content Include="Views\Error.hbs" />
+    <Content Include="Views\Index.hbs" />
     <Content Include="Views\Jade1.jade" />
     <Content Include="Views\Partials\References.hbs" />
     <Content Include="Web.config" />
