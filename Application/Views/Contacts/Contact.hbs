@@ -1,8 +1,8 @@
 ﻿{{> References}}
 
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+	<meta charset="utf-8" />
+	<title></title>
 </head>
 <body>
 	<ol class="breadcrumb">
@@ -11,8 +11,8 @@
 		<li class="active">{{Contact.Name}}</li>
 	</ol>
 
-	<h1>Upgrade to use Handlebars</h1>
 	<div class="container">
+		<h1>Contact</h1>
 		<form>
 			<div class="form-group">
 				<label for="Name">Name</label>
@@ -36,12 +36,12 @@
 				<input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter name" value="{{Contact.Details}} " />
 			</div>
 		</form>
-	</div>
 
-	<h2>Notes</h2>
-	{{#with Contact}}
-	{{#each Notes}}
-	<a href='/Companies/{{../../CompanyId}}/Contacts/{{../ID}}/Notes'> {{Title}}</a>
-	{{/each}}
-	{{/with}}
+		<h2>Notes</h2>
+		{{#with Contact}}
+		{{#each Notes}}
+		<a href='/Companies/{{../../CompanyId}}/Contacts/{{../ID}}/Notes/{{ID}}'> {{Title}}</a>
+		{{/each}}
+		{{/with}}
+	</div>
 </body>

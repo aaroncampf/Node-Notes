@@ -17,11 +17,12 @@
 										"Email": "aaroncampf@hotmail.com",
 										"Details": "Test",
 										"Notes": [
-												{
-														"Title": "Test Note",
-														"Created": "2012-04-23T18:25:43.511Z",
-														"Text": "drghdhfdhfdhnfn"
-												}
+											{
+												"ID": "1",
+												"Title": "Test Note",
+												"Created": "2012-04-23T18:25:43.511Z",
+												"Text": "drghdhfdhfdhnfn"
+											}
 										]
 								}
 						],

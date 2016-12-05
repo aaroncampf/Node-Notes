@@ -10,8 +10,8 @@
 		<li class="active">{{Company.Name}}</li>
 	</ol>
 
-	<h1>Upgrade to use Handlebars</h1>
 	<div class="container">
+		<h1>Company</h1>
 		<form>
 			<div class="form-group">
 				<label for="Name">Name</label>
@@ -39,18 +39,18 @@
 				<input type="tel" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter name" value="{{Company.Phone}}" />
 			</div>
 		</form>
-	</div>
 
-	<h2>Contacts</h2>
-	{{#with Company}}
-	{{#each Contacts}}
-	<a href='/Companies/{{../ID}}/Contacts/{{ID}}'> {{Name}}</a>
-	{{/each}}
-	{{/with}}
-	<h2>Quotes</h2>
+		<h2>Contacts</h2>
+		{{#with Company}}
+		{{#each Contacts}}
+		<a href='/Companies/{{../ID}}/Contacts/{{ID}}'> {{Name}}</a>
+		{{/each}}
+		{{/with}}
+		<h2>Quotes</h2>
 
-	<div class="jumbotron">
-		<h1>This is great</h1>
-		<p>Welcome to templating using EJS</p>
+		<div class="jumbotron">
+			<h1>This is great</h1>
+			<p>Welcome to templating using EJS</p>
+		</div>
 	</div>
 </body>

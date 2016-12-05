@@ -52,6 +52,7 @@
   <ItemGroup>
     <Content Include="Database\Data.json" />
     <Content Include="Documentation\Overview.md" />
+    <Content Include="typings\modules\express-serve-static-core\index.d.ts" />
     <Content Include="typings\modules\express-serve-static-core\typings.json" />
     <Content Include="typings\modules\express\typings.json" />
     <Content Include="typings\modules\node\typings.json" />
@@ -61,6 +62,7 @@
     <Content Include="Views\Error.hbs" />
     <Content Include="Views\Index.hbs" />
     <Content Include="Views\Jade1.jade" />
+    <Content Include="Views\Notes\Note.hbs" />
     <Content Include="Views\Partials\References.hbs" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config" />
@@ -75,7 +77,6 @@
     <Folder Include="Database\" />
     <Folder Include="Documentation\" />
     <Folder Include="typings\" />
-    <Folder Include="typings\globals\node\" />
     <Folder Include="typings\modules\" />
     <Folder Include="typings\modules\express-serve-static-core\" />
     <Folder Include="typings\modules\express-serve-static-core\" />
@@ -85,11 +86,11 @@
     <Folder Include="Views\" />
     <Folder Include="Views\Companies\" />
     <Folder Include="Views\Contacts\" />
+    <Folder Include="Views\Notes\" />
     <Folder Include="Views\Partials\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="server.ts" />
-    <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
     <TypeScriptCompile Include="typings\index.d.ts" />
     <TypeScriptCompile Include="typings\index.d.ts" />
     <TypeScriptCompile Include="typings\modules\express-serve-static-core\index.d.ts" />
