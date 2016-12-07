@@ -35,7 +35,7 @@ companyRouter.get("/", function (req, res) {
 });
 //#region Company
 companyRouter.route("/:id").get(function (req, res) {
-    var Company = Companies.find(function (Company) { return Company.ID = req.params.id; });
+    var Company = Companies.find(function (_) { return _.ID = req.params.id; });
     if (Company !== undefined) {
         res.render("Companies/Company", { Company: Company });
     }
@@ -62,7 +62,7 @@ companyRouter.route("/:id").post(function (req, res) {
 //#endregion
 //#region Contact
 companyRouter.route("/:id/Contacts/:contactid").get(function (req, res) {
-    var Company = Companies.find(function (Company) { return Company.ID = req.params.id; });
+    var Company = Companies.find(function (_) { return _.ID = req.params.id; });
     var Contact;
     if (Company !== undefined) {
         Contact = Company.Contacts.find(function (Contact) { return Contact.ID === req.params.contactid; });

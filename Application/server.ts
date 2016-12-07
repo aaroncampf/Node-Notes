@@ -10,7 +10,7 @@ import Express = require("express");
 let handlebars = require("express-handlebars");
 const Port: number = process.env.port || 1337;
 const app = Express();
-let Companies: any = require("./Database/Data.json").Companies;
+const Companies: any = require("./Database/Data.json").Companies;
 
 //#endregion
 
@@ -20,7 +20,7 @@ let bodyParser = require('body-parser') // required for POSTed form data
 app.use(bodyParser.json());             // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({         // to support URL-encoded bodies
     extended: true
-})); 
+}));
 
 
 app.engine(".hbs", handlebars({ extname: ".hbs" }));
@@ -44,20 +44,17 @@ app.use("/Companies", companyRouter);
 
 companyRouter.get("/", (req: any, res: any) => {
     // app.locals.Companies = Companies;
-    res.render(
-        "Companies/Index",
-        { Companies: Companies }
-    );
+    res.render("Companies/Index", { Companies: Companies });
 });
 
 //#region Company
 
 companyRouter.route("/:id").get((req: any, res: any) => {
-    let Company = Companies.find(Company => Company.ID = req.params.id);
+    let Company = Companies.find(_ => _.ID = req.params.id);
 
     if (Company !== undefined) {
-        res.render( "Companies/Company", { Company: Company });
-    }   
+        res.render("Companies/Company", { Company: Company });
+    }
     else {
         res.render("Error");
     }
@@ -70,13 +67,13 @@ companyRouter.route("/:id").post((req: any, res: any) => {
         res.render("Error");
     }
     else {
-        Company.Name = req.body.Name
-        Company.Address = req.body.Address
-        Company.City = req.body.City
-        Company.State = req.body.State
-        Company.Zip = req.body.Zip
-        Company.Name = req.body.Title
-        Company.Phone = req.body.Phone
+        Company.Name = req.body.Name;
+        Company.Address = req.body.Address;
+        Company.City = req.body.City;
+        Company.State = req.body.State;
+        Company.Zip = req.body.Zip;
+        Company.Name = req.body.Title;
+        Company.Phone = req.body.Phone;
 
         res.render("Companies/Company", { Company: Company });
     }
@@ -87,12 +84,12 @@ companyRouter.route("/:id").post((req: any, res: any) => {
 //#region Contact
 
 companyRouter.route("/:id/Contacts/:contactid").get((req: any, res: any) => {
-    let Company = Companies.find(Company => Company.ID = req.params.id);
+    let Company = Companies.find(_ => _.ID = req.params.id);
     let Contact: any;
     if (Company !== undefined) {
         Contact = Company.Contacts.find(Contact => Contact.ID === req.params.contactid);
     }
-    
+
     if (Contact !== undefined) {
         res.render("Contacts/Contact", { Contact: Contact, CompanyId: Company.ID, CompanyName: Company.Name });
     }
@@ -138,7 +135,7 @@ companyRouter.route("/:id/Contacts/:contactid/Notes/:noteid").get((req: any, res
     }
 
     if (Note !== undefined) {
-        res.render("Notes/Note", { Note: Note, CompanyId: Company.ID, CompanyName: Company.Name, ContactName: Contact.Name, ContactId: Contact.ID});
+        res.render("Notes/Note", { Note: Note, CompanyId: Company.ID, CompanyName: Company.Name, ContactName: Contact.Name, ContactId: Contact.ID });
     }
     else {
         res.render("Error");
