@@ -128,6 +128,22 @@ companyRouter.post("/:id/Contacts/:contactid/Notes/:noteid", function (req, res)
     }
     res.end();
 });
+companyRouter.route("/:id/Contacts/:contactid/Notes_Create").get(function (req, res) {
+    var Company = Companies.find(function (Company) { return Company.ID = req.params.id; });
+    var Contact;
+    if (Company !== undefined) {
+        Contact = Company.Contacts.find(function (Contact) { return Contact.ID === req.params.contactid; });
+    }
+    if (Contact === undefined) {
+        res.render("Error");
+    }
+    else {
+        var ID = Contact.Notes.length + 1;
+        var Note = { ID: ID };
+        Contact.Notes.push(Note);
+        res.render("Notes/Note", { Note: Note, CompanyId: Company.ID, CompanyName: Company.Name, ContactName: Contact.Name, ContactId: Contact.ID });
+    }
+});
 //#endregion
 //#endregion
 app.listen(Port);

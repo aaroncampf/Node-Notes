@@ -166,6 +166,26 @@ companyRouter.post("/:id/Contacts/:contactid/Notes/:noteid", (req: any, res: any
     res.end();
 });
 
+companyRouter.route("/:id/Contacts/:contactid/Notes_Create").get((req: any, res: any) => {
+    let Company = Companies.find(Company => Company.ID = req.params.id);
+    let Contact: any;
+
+    if (Company !== undefined) {
+        Contact = Company.Contacts.find(Contact => Contact.ID === req.params.contactid);
+    }
+
+    if (Contact === undefined) {
+        res.render("Error");
+    }
+    else {
+        const ID = Contact.Notes.length + 1
+        let Note = { ID: ID }
+        Contact.Notes.push(Note)
+        res.render("Notes/Note", { Note: Note, CompanyId: Company.ID, CompanyName: Company.Name, ContactName: Contact.Name, ContactId: Contact.ID });
+    }
+});
+
+
 //#endregion
 
 //#endregion
