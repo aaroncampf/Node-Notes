@@ -3,15 +3,15 @@
 // todo: Figure out the correct type for res
 "use strict";
 //#region Variables
-var Express = require("express");
+const Express = require("express");
 //import * as Express from "express";
-var handlebars = require("express-handlebars");
-var Port = process.env.port || 1337;
-var app = Express();
-var Companies = require("./Database/Data.json").Companies;
+let handlebars = require("express-handlebars");
+const Port = process.env.port || 1337;
+const app = Express();
+const Companies = require("./Database/Data.json").Companies;
 //#endregion
 //#region Setup
-var bodyParser = require('body-parser'); // required for POSTed form data
+let bodyParser = require('body-parser'); // required for POSTed form data
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({
     extended: true
@@ -22,20 +22,20 @@ app.set("views", "./Views");
 app.use(Express.static("./node_modules/bootstrap/dist/css"));
 //#endregion
 //#region Index
-app.get("/", function (req, res) {
+app.get("/", (req, res) => {
     res.render("Index");
 });
 //#endregion
 //#region Companies
-var companyRouter = Express.Router();
+let companyRouter = Express.Router();
 app.use("/Companies", companyRouter);
-companyRouter.get("/", function (req, res) {
+companyRouter.get("/", (req, res) => {
     // app.locals.Companies = Companies;
     res.render("Companies/Index", { Companies: Companies });
 });
 //#region Company
-companyRouter.route("/:id").get(function (req, res) {
-    var Company = Companies.find(function (_) { return _.ID = req.params.id; });
+companyRouter.route("/:id").get((req, res) => {
+    let Company = Companies.find(_ => _.ID = req.params.id);
     if (Company !== undefined) {
         res.render("Companies/Company", { Company: Company });
     }
@@ -43,8 +43,8 @@ companyRouter.route("/:id").get(function (req, res) {
         res.render("Error");
     }
 });
-companyRouter.route("/:id").post(function (req, res) {
-    var Company = Companies.find(function (Company) { return Company.ID = req.params.id; });
+companyRouter.route("/:id").post((req, res) => {
+    let Company = Companies.find(Company => Company.ID = req.params.id);
     if (Company === undefined) {
         res.render("Error");
     }
@@ -60,11 +60,11 @@ companyRouter.route("/:id").post(function (req, res) {
 });
 //#endregion
 //#region Contact
-companyRouter.route("/:id/Contacts/:contactid").get(function (req, res) {
-    var Company = Companies.find(function (_) { return _.ID = req.params.id; });
-    var Contact;
+companyRouter.route("/:id/Contacts/:contactid").get((req, res) => {
+    let Company = Companies.find(_ => _.ID = req.params.id);
+    let Contact;
     if (Company !== undefined) {
-        Contact = Company.Contacts.find(function (Contact) { return Contact.ID === req.params.contactid; });
+        Contact = Company.Contacts.find(Contact => Contact.ID === req.params.contactid);
     }
     if (Contact !== undefined) {
         res.render("Contacts/Contact", { Contact: Contact, CompanyId: Company.ID, CompanyName: Company.Name });
@@ -73,11 +73,11 @@ companyRouter.route("/:id/Contacts/:contactid").get(function (req, res) {
         res.render("Error");
     }
 });
-companyRouter.route("/:id/Contacts/:contactid").post(function (req, res) {
-    var Company = Companies.find(function (Company) { return Company.ID = req.params.id; });
-    var Contact;
+companyRouter.route("/:id/Contacts/:contactid").post((req, res) => {
+    let Company = Companies.find(Company => Company.ID = req.params.id);
+    let Contact;
     if (Company !== undefined) {
-        Contact = Company.Contacts.find(function (Contact) { return Contact.ID === req.params.contactid; });
+        Contact = Company.Contacts.find(Contact => Contact.ID === req.params.contactid);
     }
     if (Contact === undefined) {
         res.render("Error");
@@ -92,15 +92,15 @@ companyRouter.route("/:id/Contacts/:contactid").post(function (req, res) {
 });
 //#endregion
 //#region Note
-companyRouter.route("/:id/Contacts/:contactid/Notes/:noteid").get(function (req, res) {
-    var Company = Companies.find(function (Company) { return Company.ID = req.params.id; });
-    var Contact;
-    var Note;
+companyRouter.route("/:id/Contacts/:contactid/Notes/:noteid").get((req, res) => {
+    let Company = Companies.find(Company => Company.ID = req.params.id);
+    let Contact;
+    let Note;
     if (Company !== undefined) {
-        Contact = Company.Contacts.find(function (Contact) { return Contact.ID === req.params.contactid; });
+        Contact = Company.Contacts.find(Contact => Contact.ID === req.params.contactid);
     }
     if (Contact !== undefined) {
-        Note = Contact.Notes.find(function (Note) { return Note.ID === req.params.noteid; });
+        Note = Contact.Notes.find(Note => Note.ID === req.params.noteid);
     }
     if (Note !== undefined) {
         res.render("Notes/Note", { Note: Note, CompanyId: Company.ID, CompanyName: Company.Name, ContactName: Contact.Name, ContactId: Contact.ID });
@@ -109,36 +109,37 @@ companyRouter.route("/:id/Contacts/:contactid/Notes/:noteid").get(function (req,
         res.render("Error");
     }
 });
-companyRouter.post("/:id/Contacts/:contactid/Notes/:noteid", function (req, res) {
-    var Company = Companies.find(function (Company) { return Company.ID = req.params.id; });
-    var Contact;
-    var Note;
+companyRouter.post("/:id/Contacts/:contactid/Notes/:noteid", (req, res) => {
+    let Company = Companies.find(Company => Company.ID = req.params.id);
+    let Contact;
+    let Note;
     if (Company !== undefined) {
-        Contact = Company.Contacts.find(function (Contact) { return Contact.ID === req.params.contactid; });
+        Contact = Company.Contacts.find(Contact => Contact.ID === req.params.contactid);
     }
     if (Contact !== undefined) {
-        Note = Contact.Notes.find(function (Note) { return Note.ID === req.params.noteid; });
+        Note = Contact.Notes.find(Note => Note.ID === req.params.noteid);
     }
     if (Note !== undefined) {
         Note.Title = req.body.Title;
         Note.Text = req.body.Text;
     }
     else {
+        res.render("Error");
     }
     res.end();
 });
-companyRouter.route("/:id/Contacts/:contactid/Notes_Create").get(function (req, res) {
-    var Company = Companies.find(function (Company) { return Company.ID = req.params.id; });
-    var Contact;
+companyRouter.route("/:id/Contacts/:contactid/Notes_Create").get((req, res) => {
+    let Company = Companies.find(Company => Company.ID = req.params.id);
+    let Contact;
     if (Company !== undefined) {
-        Contact = Company.Contacts.find(function (Contact) { return Contact.ID === req.params.contactid; });
+        Contact = Company.Contacts.find(Contact => Contact.ID === req.params.contactid);
     }
     if (Contact === undefined) {
         res.render("Error");
     }
     else {
-        var ID = Contact.Notes.length + 1;
-        var Note = { ID: ID };
+        const ID = Contact.Notes.length + 1;
+        let Note = { ID: ID.toString() };
         Contact.Notes.push(Note);
         res.render("Notes/Note", { Note: Note, CompanyId: Company.ID, CompanyName: Company.Name, ContactName: Contact.Name, ContactId: Contact.ID });
     }

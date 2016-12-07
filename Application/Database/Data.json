@@ -26,7 +26,22 @@
 										]
 								}
 						],
-						"Quotes": []
+					"Quotes": [
+						{
+							"ID": "1",
+							"Date": "2012-04-23T18:25:43.511Z",
+							"Name": "First Quote",
+							"Details": [
+								{
+									"ID": "1",
+									"Display": "0",
+									"DESC": "HCL80W 8 zo. Lids",
+									"UNIT": "Case (1000)",
+									"Cost": "29.20"
+								}
+							]
+						}
+					]
 				}
 		],
 		"Products": []
