@@ -57,6 +57,7 @@
     <Content Include="typings\modules\express\typings.json" />
     <Content Include="typings\modules\node\typings.json" />
     <Content Include="Views\Companies\Company.hbs" />
+    <Content Include="Views\Companies\HTML1.html" />
     <Content Include="Views\Companies\Index.hbs" />
     <Content Include="Views\Contacts\Contact.hbs" />
     <Content Include="Views\Error.hbs" />

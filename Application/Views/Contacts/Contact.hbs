@@ -13,28 +13,30 @@
 
 	<div class="container">
 		<h1>Contact</h1>
-		<form>
+		<form action="/Companies/{{CompanyId}}/Contacts/{{Contact.ID}}" method="post">
 			<div class="form-group">
 				<label for="Name">Name</label>
-				<input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter name" value="{{Contact.Name}}" />
+				<input name="Name" type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter name" value="{{Contact.Name}}" />
 				<small id="emailHelp" class="form-text text-muted">This is required.</small>
 			</div>
 			<div class="form-group">
 				<label for="Name">Position</label>
-				<input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter name" value="{{Contact.Position}}" />
+				<input name="Position" type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter name" value="{{Contact.Position}}" />
 			</div>
 			<div class="form-group">
 				<label for="Name">Phone</label>
-				<input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter name" value="{{Contact.Phone}}" />
+				<input name="Phone" type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter name" value="{{Contact.Phone}}" />
 			</div>
 			<div class="form-group">
 				<label for="Name">Email</label>
-				<input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter name" value="{{Contact.Email}}" />
+				<input Name="Email" type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter name" value="{{Contact.Email}}" />
 			</div>
 			<div class="form-group">
 				<label for="Name">Details</label>
-				<input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter name" value="{{Contact.Details}} " />
+				<input name="Details" type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter name" value="{{Contact.Details}}" />
 			</div>
+
+			<input class="btn btn-primary" type="submit" value="Save" />
 		</form>
 
 		<h2>Notes</h2>
