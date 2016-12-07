@@ -54,7 +54,6 @@ companyRouter.route("/:id").post(function (req, res) {
         Company.City = req.body.City;
         Company.State = req.body.State;
         Company.Zip = req.body.Zip;
-        Company.Name = req.body.Title;
         Company.Phone = req.body.Phone;
         res.render("Companies/Company", { Company: Company });
     }

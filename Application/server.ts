@@ -30,7 +30,6 @@ app.use(Express.static("./node_modules/bootstrap/dist/css"));
 
 //#endregion
 
-
 //#region Index
 app.get("/", (req: any, res: any) => {
     res.render("Index");
@@ -72,7 +71,6 @@ companyRouter.route("/:id").post((req: any, res: any) => {
         Company.City = req.body.City;
         Company.State = req.body.State;
         Company.Zip = req.body.Zip;
-        Company.Name = req.body.Title;
         Company.Phone = req.body.Phone;
 
         res.render("Companies/Company", { Company: Company });
@@ -189,7 +187,5 @@ companyRouter.route("/:id/Contacts/:contactid/Notes_Create").get((req: any, res:
 //#endregion
 
 //#endregion
-
-
 
 app.listen(Port);
