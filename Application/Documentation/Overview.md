@@ -10,4 +10,4 @@
 
 
 ## Note To Self
-* https://www.npmjs.com/ for downloading Typings
+* Get code review at Mentorship Saturdays
