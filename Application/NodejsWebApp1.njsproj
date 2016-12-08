@@ -87,7 +87,7 @@
     <Folder Include="Views\" />
     <Folder Include="Views\Companies\" />
     <Folder Include="Views\Contacts\" />
-    <Folder Include="Views\Qu\" />
+    <Folder Include="Views\Quotes\" />
     <Folder Include="Views\Notes\" />
     <Folder Include="Views\Partials\" />
   </ItemGroup>

@@ -77,6 +77,18 @@ companyRouter.route("/:id").post((req: any, res: any) => {
     }
 });
 
+
+companyRouter.route("/:id/Contacts_Delete/:contactid").get((req: any, res: any) => {
+    let Company = Companies.find(Company => Company.ID = req.params.id);
+
+    if (Company === undefined) {
+        res.render("Error");
+    }
+    else {
+        Companies.splice(Companies.indexOf(Company), Companies.indexOf(Company) + 1);
+        res.redirect("/Companies");
+    }
+});
 //#endregion
 
 //#region Contact
@@ -113,6 +125,24 @@ companyRouter.route("/:id/Contacts/:contactid").post((req: any, res: any) => {
         Contact.Details = req.body.Details;
 
         res.render("Contacts/Contact", { Contact: Contact, CompanyId: Company.ID, CompanyName: Company.Name });
+    }
+});
+
+companyRouter.route("/:id/Contacts_Delete/:contactid").get((req: any, res: any) => {
+    let Company = Companies.find(Company => Company.ID = req.params.id);
+    let Contact: any;
+
+    if (Company !== undefined) {
+        Contact = Company.Contacts.find(Contact => Contact.ID === req.params.contactid);
+    }
+
+    if (Company === undefined) {
+        res.render("Error"); 
+    }
+    else {
+        Company.Contacts.splice(Company.Contacts.indexOf(Contact), Company.Contacts.indexOf(Contact) + 1);
+        //res.render("Contacts/Contact", { Contact: Contact, CompanyId: Company.ID, CompanyName: Company.Name });
+        res.redirect("/Companies/" + req.params.id);
     }
 });
 
@@ -156,12 +186,13 @@ companyRouter.post("/:id/Contacts/:contactid/Notes/:noteid", (req: any, res: any
     if (Note !== undefined) {
         Note.Title = req.body.Title;
         Note.Text = req.body.Text;
+
+        //res.render("Notes/Note", { Note: Note, CompanyId: Company.ID, CompanyName: Company.Name, ContactName: Contact.Name, ContactId: Contact.ID });
+        res.render("Contacts/Contact", { Contact: Contact, CompanyId: Company.ID, CompanyName: Company.Name });
     }
     else {
         res.render("Error");
     }
-
-    res.end();
 });
 
 companyRouter.route("/:id/Contacts/:contactid/Notes_Create").get((req: any, res: any) => {
@@ -183,6 +214,28 @@ companyRouter.route("/:id/Contacts/:contactid/Notes_Create").get((req: any, res:
     }
 });
 
+companyRouter.route("/:id/Contacts/:contactid/Notes_Delete/:noteid").get((req: any, res: any) => {
+    let Company = Companies.find(Company => Company.ID = req.params.id);
+    let Contact: any;
+    let Note: any;
+
+    if (Company !== undefined) {
+        Contact = Company.Contacts.find(Contact => Contact.ID === req.params.contactid);
+    }
+
+    if (Contact !== undefined) {
+        Note = Contact.Notes.find(Note => Note.ID === req.params.noteid);
+    }
+
+    if (Note === undefined) {
+        res.render("Error");
+    }
+    else {
+        Contact.Notes.splice(Contact.Notes.indexOf(Note), Contact.Notes.indexOf(Note) + 1);
+        //res.render("Contacts/Contact", { Contact: Contact, CompanyId: Company.ID, CompanyName: Company.Name });
+        res.redirect("/Companies/" + req.params.id + "/Contacts/" + req.params.contactid);
+    }
+});
 
 
 //#endregion

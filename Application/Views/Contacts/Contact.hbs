@@ -36,15 +36,22 @@
 				<input name="Details" type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter name" value="{{Contact.Details}}" />
 			</div>
 
-			<input class="btn btn-primary" type="submit" value="Save" />
+			<input class="btn btn-primary" type="submit" value="Save" onclick="" />
 		</form>
 
 		<h2>Notes</h2>
-		<a href="/Companies/{{CompanyId}}/Contacts/{{Contact.ID}}/Notes_Create">content</a>
+		<a class="btn btn-primary" href="/Companies/{{CompanyId}}/Contacts/{{Contact.ID}}/Notes_Create">Add</a>
+		<br />
+		<br />
+		
 		{{#with Contact}}
 		{{#each Notes}}
 		<a href='/Companies/{{../../CompanyId}}/Contacts/{{../ID}}/Notes/{{ID}}'> {{Title}}</a>
+		<br />
 		{{/each}}
 		{{/with}}
+
+		<br />
+		<a class="btn btn-primary" href='/Companies/{{CompanyId}}/Contacts_Delete/{{Contact.ID}}'>Delete Contact</a>
 	</div>
 </body>
