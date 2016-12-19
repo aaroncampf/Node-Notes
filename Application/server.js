@@ -35,7 +35,7 @@ companyRouter.get("/", (req, res) => {
 });
 //#region Company
 companyRouter.route("/:id").get((req, res) => {
-    let Company = Companies.find(_ => _.ID = req.params.id);
+    const Company = Companies.find(_ => _.ID = req.params.id);
     if (Company !== undefined) {
         res.render("Companies/Company", { Company: Company });
     }
@@ -44,7 +44,7 @@ companyRouter.route("/:id").get((req, res) => {
     }
 });
 companyRouter.route("/:id").post((req, res) => {
-    let Company = Companies.find(Company => Company.ID = req.params.id);
+    const Company = Companies.find(Company => Company.ID = req.params.id);
     if (Company === undefined) {
         res.render("Error");
     }
@@ -59,7 +59,7 @@ companyRouter.route("/:id").post((req, res) => {
     }
 });
 companyRouter.route("/:id/Contacts_Delete/:contactid").get((req, res) => {
-    let Company = Companies.find(Company => Company.ID = req.params.id);
+    const Company = Companies.find(Company => Company.ID = req.params.id);
     if (Company === undefined) {
         res.render("Error");
     }
@@ -69,7 +69,7 @@ companyRouter.route("/:id/Contacts_Delete/:contactid").get((req, res) => {
     }
 });
 companyRouter.route("/:id/Contacts_Create/:contactid").get((req, res) => {
-    let Company = Companies.find(Company => Company.ID = req.params.id);
+    const Company = Companies.find(Company => Company.ID = req.params.id);
     if (Company === undefined) {
         res.render("Error");
     }
@@ -85,7 +85,7 @@ companyRouter.route("/:id/Contacts_Create/:contactid").get((req, res) => {
 //#endregion
 //#region Contact
 companyRouter.route("/:id/Contacts/:contactid").get((req, res) => {
-    let Company = Companies.find(_ => _.ID = req.params.id);
+    const Company = Companies.find(_ => _.ID = req.params.id);
     let Contact;
     if (Company !== undefined) {
         Contact = Company.Contacts.find(Contact => Contact.ID === req.params.contactid);
@@ -98,7 +98,7 @@ companyRouter.route("/:id/Contacts/:contactid").get((req, res) => {
     }
 });
 companyRouter.route("/:id/Contacts/:contactid").post((req, res) => {
-    let Company = Companies.find(Company => Company.ID = req.params.id);
+    const Company = Companies.find(Company => Company.ID = req.params.id);
     let Contact;
     if (Company !== undefined) {
         Contact = Company.Contacts.find(Contact => Contact.ID === req.params.contactid);
@@ -115,7 +115,7 @@ companyRouter.route("/:id/Contacts/:contactid").post((req, res) => {
     }
 });
 companyRouter.route("/:id/Contacts_Delete/:contactid").get((req, res) => {
-    let Company = Companies.find(Company => Company.ID = req.params.id);
+    const Company = Companies.find(Company => Company.ID = req.params.id);
     let Contact;
     if (Company !== undefined) {
         Contact = Company.Contacts.find(Contact => Contact.ID === req.params.contactid);
@@ -130,7 +130,7 @@ companyRouter.route("/:id/Contacts_Delete/:contactid").get((req, res) => {
     }
 });
 companyRouter.route("/:id/Contacts_Create/:contactid").get((req, res) => {
-    let Company = Companies.find(Company => Company.ID = req.params.id);
+    const Company = Companies.find(Company => Company.ID = req.params.id);
     if (Company === undefined) {
         res.render("Error");
     }
@@ -146,7 +146,7 @@ companyRouter.route("/:id/Contacts_Create/:contactid").get((req, res) => {
 //#endregion
 //#region Note
 companyRouter.route("/:id/Contacts/:contactid/Notes/:noteid").get((req, res) => {
-    let Company = Companies.find(Company => Company.ID = req.params.id);
+    const Company = Companies.find(Company => Company.ID = req.params.id);
     let Contact;
     let Note;
     if (Company !== undefined) {
@@ -163,7 +163,7 @@ companyRouter.route("/:id/Contacts/:contactid/Notes/:noteid").get((req, res) => 
     }
 });
 companyRouter.post("/:id/Contacts/:contactid/Notes/:noteid", (req, res) => {
-    let Company = Companies.find(Company => Company.ID = req.params.id);
+    const Company = Companies.find(Company => Company.ID = req.params.id);
     let Contact;
     let Note;
     if (Company !== undefined) {
@@ -184,7 +184,7 @@ companyRouter.post("/:id/Contacts/:contactid/Notes/:noteid", (req, res) => {
     }
 });
 companyRouter.route("/:id/Contacts/:contactid/Notes_Create").get((req, res) => {
-    let Company = Companies.find(Company => Company.ID = req.params.id);
+    const Company = Companies.find(Company => Company.ID = req.params.id);
     let Contact;
     if (Company !== undefined) {
         Contact = Company.Contacts.find(Contact => Contact.ID === req.params.contactid);
@@ -202,7 +202,7 @@ companyRouter.route("/:id/Contacts/:contactid/Notes_Create").get((req, res) => {
     }
 });
 companyRouter.route("/:id/Contacts/:contactid/Notes_Delete/:noteid").get((req, res) => {
-    let Company = Companies.find(Company => Company.ID = req.params.id);
+    const Company = Companies.find(Company => Company.ID = req.params.id);
     let Contact;
     let Note;
     if (Company !== undefined) {
